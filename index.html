@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K2 MART</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0d0d0d;
+            color: #e6e6e6;
+        }
+
+        .top-bar {
+            background-color: #1a1a1a;
+            color: #d4af37;
+            text-align: center;
+            padding: 9px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        header {
+            background-color: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .brand-logo {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #d4af37;
+            text-shadow: 0px 2px 4px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: block;
+            text-align: center;
+        }
+
+        .nav-link {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 5px 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #d4af37;
+        }
+
+        .content-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 45px 15px;
+        }
+
+        /* --- HOME HERO & SHORT DESCRIPTION STYLES --- */
+        .home-hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #111 0%, #070707 100%);
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .home-main-title {
+            font-size: 36px;
+            letter-spacing: 6px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .feature-box {
+            background-color: #111111;
+            border: 1px solid #222222;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 500px;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .feature-box h2 {
+            font-size: 14px;
+            color: #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .feature-box p {
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        /* SHORT & SHARP SECRET PACKAGING BOX */
+        .home-brand-story {
+            margin-top: 35px;
+            padding: 25px;
+            background-color: #111111;
+            border: 1px solid #1e1e1e;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+        }
+
+        .story-title {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: #161616;
+            border-left: 3px solid #d4af37;
+            padding: 15px;
+            font-size: 13px;
+            color: #ffffff;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: normal;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d4af37;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        /* --- GRID & CARDS --- */
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .product-card {
+            background-color: #111111;
+            border: 1px solid #222222;
+            padding: 12px;
+            border-radius: 2px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 12px;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .live-rating-container {
+            font-size: 12px;
+            color: #e5c158;
+            margin-bottom: 8px;
+            cursor: pointer;
+            text-decoration: underline dashed;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+        }
+        .live-rating-container:hover {
+            color: #ffffff;
+        }
+
+        .product-review-link {
+            font-size: 10px;
+            color: #aaaaaa;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid #333;
+            padding: 5px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .product-review-link:hover {
+            color: #d4af37;
+            border-color: #d4af37;
+        }
+
+        .action-btn {
+            display: block;
+            background-color: #d4af37;
+            color: #000000;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 8px;
+            text-align: center;
+            border-radius: 2px;
+            margin-top: auto;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .action-btn:hover {
+            background-color: #ffffff;
+        }
+
+        /* --- POPUP & FORMS --- */
+        .reviews-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background-color: #111111;
+            border: 1px solid #d4af37;
+            box-shadow: 0 0 30px rgba(0,0,0,0.9);
+            z-index: 1000;
+            padding: 25px;
+            border-radius: 4px;
+        }
+
+        .popup-close {
+            float: right;
+            color: #999;
+            cursor: pointer;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .popup-close:hover { color: #fff; }
+
+        .review-item-box {
+            background: #1a1a1a;
+            border: 1px solid #222;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .popup-backdrop {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 999;
+        }
+
+        .order-form-container {
+            max-width: 650px;
+            margin: 10px auto;
+            background-color: #111111;
+            border: 1px solid #222222;
+            padding: 35px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: #999999;
+            padding: 5px 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 25px;
+            border-bottom: 1px dashed #444;
+        }
+
+        .back-btn:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: #161616;
+            border: 1px solid #2d2d2d;
+            color: #ffffff;
+            font-size: 13px;
+            border-radius: 3px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #d4af37;
+            background-color: #1c1c1c;
+            outline: none;
+        }
+
+        .submit-order-btn {
+            display: block;
+            width: 100%;
+            background-color: #d4af37;
+            color: #000000;
+            border: none;
+            padding: 15px;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-top: 25px;
+        }
+
+        .submit-order-btn:hover { background-color: #ffffff; }
+
+        /* CONTACT STYLE WITH WHATSAPP BUTTON */
+        .contact-block {
+            background-color: #111111;
+            border: 1px solid #222222;
+            padding: 30px;
+            text-align: center;
+            max-width: 450px;
+            margin: 0 auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .contact-block strong {
+            color: #d4af37;
+            display: block;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 12px 25px;
+            border-radius: 3px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: background 0.2s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1ebd58;
+            color: #ffffff;
+        }
+
+        .page-section { display: none; }
+        #home-sec { display: block; } /* Home page is default open */
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 60px;
+            background-color: #0a0a0a;
+        }
+
+        @media (max-width: 768px) {
+            .premium-grid { grid-template-columns: repeat(2, 1fr); }
+            .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 15px; }
+        }
+        @media (max-width: 480px) {
+            .premium-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Welcome to K2 MART</div>
+
+    <header>
+        <div class="brand-logo" onclick="showPage('home-sec')">K2 MART</div>
+        <div class="nav-menu">
+            <span class="nav-link active" id="link-home" onclick="showPage('home-sec')">Home</span> | 
+            <span class="nav-link" id="link-sheets" onclick="showPage('sheets-sec')">Full Sheets</span> | 
+            <span class="nav-link" id="link-liquids" onclick="showPage('liquids-sec')">Liquids</span> | 
+            <span class="nav-link" id="link-samples" onclick="showPage('samples-sec')">Samples</span> | 
+            <span class="nav-link" id="link-contact" onclick="showPage('contact-sec')">Contact</span>
+        </div>
+    </header>
+
+    <div class="content-container">
+
+        <div id="home-sec" class="page-section">
+            <div class="home-hero">
+                <h1 class="home-main-title">K2 MART</h1>
+                <p style="color:#d4af37; font-size:12px; letter-spacing:3px; margin-bottom:25px; font-style: italic;">Premium Quality & Ultimate Perfection</p>
+                <div class="feature-box"><h2>100% Trusted Brand</h2><p>Built on flawless trust, providing high-end elite export reliability.</p></div>
+                <div class="feature-box"><h2>Wholesale Prices</h2><p>Get top-tier manufacturing materials directly at uncompromised bulk rates.</p></div>
+                <div class="feature-box"><h2>Highly Secure Shipping</h2><p>Fast, completely dynamic, and strict confidential safety logistics.</p></div>
+            </div>
+
+            <div class="home-brand-story">
+                <h2 class="story-title">Confidential Wholesale Operations</h2>
+                <div class="highlight-box">
+                    <strong style="color: #d4af37; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">🔒 Highly Recommended: Secret & Discrete Packaging</strong>
+                    We strictly value your absolute privacy and safety. All orders are processed under our premium custom secret packaging system. Bags and parcels are completely non-branded, vacuum-sealed, and double-protected to keep your premium trade materials hidden from unverified eyes during international transit. Flawless security guaranteed.
+                </div>
+            </div>
+        </div>
+
+        <div id="sheets-sec" class="page-section">
+            <h2 class="page-title">Full Sheets Collection</h2>
+            <div class="premium-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 1</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 1')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,000 | Prem: 1,500</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 1', 'sheets-sec')">✍️ leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 1', 'sheets-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 2</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 2')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,200 | Prem: 1,800</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 2', 'sheets-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 2', 'sheets-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 3</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 3')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,400 | Prem: 2,100</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 3', 'sheets-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 3', 'sheets-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 4</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 4')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,500 | Prem: 2,300</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 4', 'sheets-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 4', 'sheets-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 5</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 5')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,600 | Prem: 2,500</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 5', 'sheets-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 5', 'sheets-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 6</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 6')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,700 | Prem: 2,650</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 6', 'sheets-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 6', 'sheets-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 7</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 7')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,800 | Prem: 2,800</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 7', 'sheets-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 7', 'sheets-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Full Sheet Slot 8</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Full Sheet Slot 8')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 1,900 | Prem: 3,000</p>
+                    <span class="product-review-link" onclick="openReviewPage('Full Sheet Slot 8', 'sheets-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Full Sheet Slot 8', 'sheets-sec')">Order Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="liquids-sec" class="page-section">
+            <h2 class="page-title">Liquids Collection</h2>
+            <div class="premium-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Premium Liquid Slot 1</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Premium Liquid Slot 1')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 800 | Prem: 1,200</p>
+                    <span class="product-review-link" onclick="openReviewPage('Premium Liquid Slot 1', 'liquids-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Premium Liquid Slot 1', 'liquids-sec')">Order Now</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">Premium Liquid Slot 2</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Premium Liquid Slot 2')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Std: 900 | Prem: 1,350</p>
+                    <span class="product-review-link" onclick="openReviewPage('Premium Liquid Slot 2', 'liquids-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Premium Liquid Slot 2', 'liquids-sec')">Order Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="samples-sec" class="page-section">
+            <h2 class="page-title">Request Samples</h2>
+            <div class="premium-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <h3 class="product-name">VIP Sample Kit</h3>
+                    <div class="live-rating-container" onclick="viewProductReviews('Free Sample')">★ 5.0 (0 Reviews)</div>
+                    <p class="product-price">Delivery Fee: 60$</p>
+                    <span class="product-review-link" onclick="openReviewPage('Free Sample ', 'samples-sec')">✍️ Leave A Review</span>
+                    <button class="action-btn" onclick="selectProduct('Free Sample ', 'samples-sec')">Order Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact-sec" class="page-section">
+            <h2 class="page-title">Contact Us</h2>
+            <div class="contact-block">
+                <strong>Reach Out for Wholesale Inquiries</strong>
+                <p style="color: #999; font-size: 13px; line-height: 1.6;">Our support team is available 24/7 for your secure orders and bulk negotiations. Privacy guaranteed.</p>
+                <a href="#" class="whatsapp-btn">💬 Chat on WhatsApp</a>
+            </div>
+        </div>
+
+        <div id="order-sec" class="page-section">
+            <button class="back-btn" id="order-back-btn" onclick="showPage('home-sec')">← Back to Menu</button>
+            <h2 class="page-title">Secure Checkout</h2>
+            <div class="order-form-container">
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label>Selected Product</label>
+                        <input type="text" id="order-product-name" readonly value="">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="order-quantity" min="1" max="100" value="1" placeholder="1-100">
+                    </div>
+                    <div class="form-group">
+                        <label>Country / Region</label>
+                        <!-- Added onchange event here to show the input box if "Other" is selected -->
+                        <select id="order-country" onchange="document.getElementById('custom-country').style.display = (this.value === 'Other') ? 'block' : 'none';">
+                            <option value="" disabled selected>Select your country</option>
+                            <option value="Afghanistan">Afghanistan</option>
+                            <option value="Albania">Albania</option>
+                            <option value="Algeria">Algeria</option>
+                            <option value="Andorra">Andorra</option>
+                            <option value="Angola">Angola</option>
+                            <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Armenia">Armenia</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Azerbaijan">Azerbaijan</option>
+                            <option value="Bahamas">Bahamas</option>
+                            <option value="Bahrain">Bahrain</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Barbados">Barbados</option>
+                            <option value="Belarus">Belarus</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Belize">Belize</option>
+                            <option value="Benin">Benin</option>
+                            <option value="Bhutan">Bhutan</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                            <option value="Botswana">Botswana</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Brunei">Brunei</option>
+                            <option value="Bulgaria">Bulgaria</option>
+                            <option value="Burkina Faso">Burkina Faso</option>
+                            <option value="Burundi">Burundi</option>
+                            <option value="Cabo Verde">Cabo Verde</option>
+                            <option value="Cambodia">Cambodia</option>
+                            <option value="Cameroon">Cameroon</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Central African Republic">Central African Republic</option>
+                            <option value="Chad">Chad</option>
+                            <option value="Chile">Chile</option>
+                            <option value="China">China</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Comoros">Comoros</option>
+                            <option value="Congo">Congo</option>
+                            <option value="Costa Rica">Costa Rica</option>
+                            <option value="Croatia">Croatia</option>
+                            <option value="Cuba">Cuba</option>
+                            <option value="Cyprus">Cyprus</option>
+                            <option value="Czech Republic">Czech Republic</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Djibouti">Djibouti</option>
+                            <option value="Dominica">Dominica</option>
+                            <option value="Dominican Republic">Dominican Republic</option>
+                            <option value="East Timor">East Timor</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="El Salvador">El Salvador</option>
+                            <option value="Equatorial Guinea">Equatorial Guinea</option>
+                            <option value="Eritrea">Eritrea</option>
+                            <option value="Estonia">Estonia</option>
+                            <option value="Eswatini">Eswatini</option>
+                            <option value="Ethiopia">Ethiopia</option>
+                            <option value="Fiji">Fiji</option>
+                            <option value="Finland">Finland</option>
+                            <option value="France">France</option>
+                            <option value="Gabon">Gabon</option>
+                            <option value="Gambia">Gambia</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Grenada">Grenada</option>
+                            <option value="Guatemala">Guatemala</option>
+                            <option value="Guinea">Guinea</option>
+                            <option value="Guinea-Bissau">Guinea-Bissau</option>
+                            <option value="Guyana">Guyana</option>
+                            <option value="Haiti">Haiti</option>
+                            <option value="Honduras">Honduras</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="Iceland">Iceland</option>
+                            <option value="India">India</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Iran">Iran</option>
+                            <option value="Iraq">Iraq</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="Israel">Israel</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Ivory Coast">Ivory Coast</option>
+                            <option value="Jamaica">Jamaica</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Jordan">Jordan</option>
+                            <option value="Kazakhstan">Kazakhstan</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Kiribati">Kiribati</option>
+                            <option value="Kuwait">Kuwait</option>
+                            <option value="Kyrgyzstan">Kyrgyzstan</option>
+                            <option value="Laos">Laos</option>
+                            <option value="Latvia">Latvia</option>
+                            <option value="Lebanon">Lebanon</option>
+                            <option value="Lesotho">Lesotho</option>
+                            <option value="Liberia">Liberia</option>
+                            <option value="Libya">Libya</option>
+                            <option value="Liechtenstein">Liechtenstein</option>
+                            <option value="Lithuania">Lithuania</option>
+                            <option value="Luxembourg">Luxembourg</option>
+                            <option value="Madagascar">Madagascar</option>
+                            <option value="Malawi">Malawi</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Maldives">Maldives</option>
+                            <option value="Mali">Mali</option>
+                            <option value="Malta">Malta</option>
+                            <option value="Marshall Islands">Marshall Islands</option>
+                            <option value="Mauritania">Mauritania</option>
+                            <option value="Mauritius">Mauritius</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="Micronesia">Micronesia</option>
+                            <option value="Moldova">Moldova</option>
+                            <option value="Monaco">Monaco</option>
+                            <option value="Mongolia">Mongolia</option>
+                            <option value="Montenegro">Montenegro</option>
+                            <option value="Morocco">Morocco</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Myanmar">Myanmar</option>
+                            <option value="Namibia">Namibia</option>
+                            <option value="Nauru">Nauru</option>
+                            <option value="Nepal">Nepal</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Nicaragua">Nicaragua</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="North Korea">North Korea</option>
+                            <option value="North Macedonia">North Macedonia</option>
+                            <option value="Norway">Norway</option>
+                            <option value="Oman">Oman</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Palau">Palau</option>
+                            <option value="Palestine">Palestine</option>
+                            <option value="Panama">Panama</option>
+                            <option value="Papua New Guinea">Papua New Guinea</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Philippines">Philippines</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Qatar">Qatar</option>
+                            <option value="Romania">Romania</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Rwanda">Rwanda</option>
+                            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                            <option value="Saint Lucia">Saint Lucia</option>
+                            <option value="Saint Vincent">Saint Vincent</option>
+                            <option value="Samoa">Samoa</option>
+                            <option value="San Marino">San Marino</option>
+                            <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                            <option value="Saudi Arabia">Saudi Arabia</option>
+                            <option value="Senegal">Senegal</option>
+                            <option value="Serbia">Serbia</option>
+                            <option value="Seychelles">Seychelles</option>
+                            <option value="Sierra Leone">Sierra Leone</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Slovakia">Slovakia</option>
+                            <option value="Slovenia">Slovenia</option>
+                            <option value="Solomon Islands">Solomon Islands</option>
+                            <option value="Somalia">Somalia</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="South Korea">South Korea</option>
+                            <option value="South Sudan">South Sudan</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sri Lanka">Sri Lanka</option>
+                            <option value="Sudan">Sudan</option>
+                            <option value="Suriname">Suriname</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Syria">Syria</option>
+                            <option value="Taiwan">Taiwan</option>
+                            <option value="Tajikistan">Tajikistan</option>
+                            <option value="Tanzania">Tanzania</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Togo">Togo</option>
+                            <option value="Tonga">Tonga</option>
+                            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                            <option value="Tunisia">Tunisia</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="Turkmenistan">Turkmenistan</option>
+                            <option value="Tuvalu">Tuvalu</option>
+                            <option value="Uganda">Uganda</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="United Arab Emirates">United Arab Emirates</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States">United States</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Uzbekistan">Uzbekistan</option>
+                            <option value="Vanuatu">Vanuatu</option>
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Yemen">Yemen</option>
+                            <option value="Zambia">Zambia</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+                            <!-- Custom option added here -->
+                            <option value="Other">Other (Type your own)</option>
+                        </select>
+                        
+                        <!-- Custom Text Box (Hidden by default) -->
+                        <input type="text" id="custom-country" placeholder="Type your country name" style="display: none; margin-top: 10px;">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" placeholder="Enter Phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <textarea rows="3" placeholder="Enter Full Street Address, City, State, Zip Code"></textarea>
+                </div>
+                <button class="submit-order-btn">Confirm Order</button>
+            </div>
+        </div>
+
+    </div> 
+    
+    <footer>
+        <p style="color: #444; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">© 2026 K2 MART. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Function to show pages and hide others
+        function showPage(pageId) {
+            // 1. Hide all page sections
+            let sections = document.querySelectorAll('.page-section');
+            sections.forEach(function(sec) {
+                sec.style.display = 'none';
+            });
+            
+            // 2. Show the targeted section
+            let targetSection = document.getElementById(pageId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+
+            // 3. Remove 'active' class from all nav links
+            let links = document.querySelectorAll('.nav-link');
+            links.forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            // 4. Add 'active' class to clicked nav link
+            let linkId = 'link-' + pageId.replace('-sec', '');
+            let activeLink = document.getElementById(linkId);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Scroll to top when changing pages
+            window.scrollTo(0,0);
+        }
+
+        // Function for order button (Dynamic Redirect Sheet Setup)
+        function selectProduct(productName, returnPage) {
+            showPage('order-sec'); // Redirect to Checkout section dynamically
+            document.getElementById('order-product-name').value = productName; // Map item name
+            
+            // Customize back button history tracker
+            if(returnPage) {
+                document.getElementById('order-back-btn').setAttribute("onclick", "showPage('" + returnPage + "')");
+            } else {
+                document.getElementById('order-back-btn').setAttribute("onclick", "showPage('home-sec')");
+            }
+        }
+
+        // Placeholder for Reviews
+        function viewProductReviews(productName) {
+            alert('Currently there are 0 reviews for ' + productName);
+        }
+
+        function openReviewPage(productName, returnPage) {
+            alert('Write a review for ' + productName + '\n(Popup functionality can be added here)');
+        }
+    </script>
+</body>
+</html>
